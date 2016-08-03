@@ -8,6 +8,14 @@ function f() {
 }
 
 function g() {
+  const x = [5];
+  assert(x[0] === 5);
+  x[0] = 6;
+  assert(x[0] === 6);
+  x = [6]; // TypeError
+}
+
+function h() {
   const x = 5;
   {
     const x = 6;
@@ -17,5 +25,6 @@ function g() {
 }
 
 assert.throws(f, TypeError);
-g();
+assert.throws(g, TypeError);
+h();
 console.log('OK');
